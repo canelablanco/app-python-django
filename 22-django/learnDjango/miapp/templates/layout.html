@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    
+    <title>
+        {% block title %}
+        <!--Titulo de cada página-->
+        {% endblock %}
+        | By Isabel
+        </title>
+
+        {% load filters %}
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+
+    <!--Cabecera de la página-->
+    <header>
+        <div id="logotipo">
+            <!--logotipo Django-->
+            <img src="{% static 'images/logo.png' %}" />
+            <h1>Sitio web con Django</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li>
+                <a href="{% url 'hola_mundo' %}">Hola mundo</a>
+            </li>
+            <li>
+                <a href="{% url 'pagina' %}">Página de pruebas</a>
+            </li>
+            <li>
+                <a href="{% url 'contacto' nombre='Isabel' apellidos='Blanco' %}">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+    
+
+    <div id="content">
+        <div class="box">
+            {% block content %}
+                <!--Código que viene de templates-->
+                <strong>Contenido del bloque original</strong>
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer>
+        Master en python | Ejercicio Django | {% now "d/m/Y h:m:s" %}
+    </footer>
+
+</body>
+
+</html>

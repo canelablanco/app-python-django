@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% load filters %}
+
+{% block title %} Página de pruebas {% endblock %}
+
+{% block content %}
+
+<h2 class="title">Titulo de prueba</h2>
+<h1>Página de mi web</h1>
+<p>{{ "Creado por Isabel"|cut:"bel" }}</p> <!--filtros ejemplo-->
+
+{{texto|default:"No se encuentra el texto"}}
+
+<p>
+    {{lista|join:', '}}
+</p>
+
+<p>
+    {{"texto de prueba"|length}}
+</p>
+
+<p>
+    {{"texto de prueba"|upper}}
+</p>
+
+<p>
+    {{lista|random}}
+</p>
+
+<p>
+    {{"texto de PRUEBA"|lower}}
+</p>
+
+<p>
+    {{"<h1>texto</h1> <strong>de prueba</strong> hello <p> world </p>"|striptags|wordcount}}
+</p>
+
+{{"Isabel Blanco"|saludo|safe}}
+
+{% endblock %}
